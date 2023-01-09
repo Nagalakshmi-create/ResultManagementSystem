@@ -1,0 +1,33 @@
+#add-student{
+    position: relative;
+    bottom: 700px;
+}
+
+.box {
+    height: 580px;
+    width: 450px;
+    background-color: rgb(196 225 199);
+    margin-top: 70px;
+    margin-left: 400px;
+    border-radius: 85px;
+    text-align: center;
+    padding-top: 23px;
+}
+
+.add-heading {
+    font-size: 22px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-family: cursive;
+    color: darkslategray;
+
+}
+.form-input {
+    border-radius: 20px;
+    border: none;
+    padding: 8px;
+    width: 71%;
+    color: cornflowerblue;
+    font-weight: 600;
+    font-family: initial;
+}

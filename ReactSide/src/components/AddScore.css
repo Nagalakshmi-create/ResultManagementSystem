@@ -1,0 +1,49 @@
+#add-score {
+  position: relative;
+  bottom: 650px;
+}
+
+.addScore-box {
+  height: 327px;
+  width: 461px;
+  background-color: rgb(127 189 128 / 32%);
+  margin-left: 395px;
+  margin-top: 70px;
+  padding-right: 37px;
+  border-radius: 27px;
+  padding-left: 53px;
+  padding-top: 23px;
+}
+
+.score-box {
+  width: 40px;
+}
+
+.score-heading {
+  text-align: center;
+}
+
+.addScore-btn {
+  margin-left: 30%;
+  text-align: center;
+}
+
+.options {
+    color: #01010a;
+    padding-right: 11px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.subjects{
+    color: #01010a;
+    padding-right: 25px;
+    font-size: 17px;
+    font-weight: 600;
+}
+.total{
+    color: #01010a;
+    padding-right: 4px;
+    font-size: 17px;
+    font-weight: 600;
+}

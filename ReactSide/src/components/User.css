@@ -1,0 +1,18 @@
+.user-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.result-box {
+    height: 280px;
+    background-color: rgb(231, 209, 252);
+    width: 300px;
+    margin-left: 40%;
+    margin-top: 10%;
+    padding-left: 4%;
+    padding-top: 3%;
+    border-radius: 8%;
+    color: blue;
+}
