@@ -256,6 +256,21 @@ app.post("/delete", (req, res) => {
   })
 });
 
+// Edit the students
+app.post("/edit", (req, res) => {
+  console.log(req.body.id);
+  let editQuery = `delete from student_details where id='${req.body.id}'`;
+  let editQuery1 = `delete from total_score where student_id='${req.body.id}'`;
+  pool.query(editQuery, (err, result) => {
+    console.log("Student record edited successfully");
+  });
+  pool.query(editQuery1, (err1, result1) => {
+    console.log("Score record edited successfully");
+  })
+});
+
+
+
 
 
 app.listen(9000, (req, res) => {

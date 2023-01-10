@@ -8,13 +8,16 @@
 #result-box {
     height: 280px;
     background-color: rgb(231, 209, 252);
+    /* -webkit-box-shadow: 0 0 30px #feb2e3;
+    box-shadow: 0 0 30px #f3bfee; */
     width: 300px;
     margin-left: 40%;
     /* margin-top: 8%; */
     padding-left: 4%;
     padding-top: 3%;
     border-radius: 8%;
-    color: blue;
+    color: rgb(213, 64, 34);
+    font-weight: bold;
 }
 
 #student-submit {

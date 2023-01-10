@@ -26,13 +26,13 @@ const Signup = () => {
     }
   };
   const showToastMessage = () => {
-    toast.success("Sign in Successfull !", {
+    toast.success("Sign up Successfull !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
 
   const showToastMessage1 = () => {
-    toast.success('Email already exists !', {
+    toast.danger('Email already exists !', {
         position: toast.POSITION.TOP_RIGHT
     });
 };

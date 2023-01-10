@@ -15,30 +15,53 @@ const ViewList = () => {
     fetchData();
   }, []);
 
-
-  const url = "http://localhost:9000/delete";
+  const url = "http://localhost:9000/delete"; //URL To delete Student
 
   const deleteStudent = (id) => {
-    let check = window.confirm('Are you sure you want to delete this student?');
+    //Function to delete the student
+    let check = window.confirm("Are you sure you want to delete this student?");
     if (check == true) {
       axios
-      .post(url, {
-        id: id,
-      })
-      .then((res) => {console.log("Deleted successfully")});
-      window.location.reload(false)
+        .post(url, {
+          id: id,
+        })
+        .then((res) => {
+          console.log("Deleted successfully");
+        });
+      window.location.reload(false);
     } else {
       console.log("Not deleted");
     }
   };
 
+  const urledit = "http://localhost:9000/edit"; //To edit the student
+
+  const editStudent = (id) => {
+    //Function to edit the student
+    let check = window.confirm("Do you want to edit changes");
+    if (check == true) {
+      axios
+        .post(urledit, {
+          id: id,
+        })
+        .then((res) => {
+          console.log("edited");
+        });
+      window.location.reload(false);
+    } else {
+      console.log("Not edited");
+    }
+  };
 
   return (
     <>
       <Sidebar />
       <div id="list-div">
         <main>
-          <h1 style={{ textAlign: "center", color: "blue", marginBottom:30 }}> Student List</h1>
+          <h1 style={{ textAlign: "center", color: "blue", marginBottom: 30 }}>
+            {" "}
+            Student List
+          </h1>
           <table className="table table-bordered shadow-lg">
             <thead className="table-dark">
               <tr>
@@ -51,6 +74,7 @@ const ViewList = () => {
                 <th>Address</th>
                 <th>Blood Group</th>
                 <th>Total Marks</th>
+                <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -72,13 +96,22 @@ const ViewList = () => {
                     <td className="status-font">{obj.total}</td>
                     <td
                       className="text-center cursor"
-                      onClick={() => { 
+                      onClick={() => {
+                        editStudent(obj.id);
+                      }}
+                    >
+                      ✎
+                    </td>
+                    <td
+                      className="text-center cursor"
+                      onClick={() => {
                         deleteStudent(obj.id);
                       }}
                     >
                       🗑
                     </td>
                   </tr>
+                   
                 ))}
             </tbody>
           </table>

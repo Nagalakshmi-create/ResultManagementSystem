@@ -18,7 +18,7 @@ const AddScore = () => {
   };
 
   const showToastMessage1 = () => {
-    toast.error("Login failed !", {
+    toast.error("Details are not added !", {
       position: toast.POSITION.TOP_CENTER,
     });
   };
@@ -43,7 +43,6 @@ const AddScore = () => {
   });
 
   function submit(e) {
-    // e.preventDefault();
     axios
       .post("http://localhost:9000/addScore", {
         studentId: allData.studentId,
@@ -59,10 +58,10 @@ const AddScore = () => {
         console.log(res.data.exists);
         if (res.data.exists == "True") {
           showToastMessage();
-        } else {
-          showToastMessage1();
+          // studentId: ""
         }
       });
+      
   }
 
   //api for student-id
@@ -105,12 +104,12 @@ const AddScore = () => {
         <form onSubmit={(e) => submit(e)}>
           {/* select student ID from student_details table */}
           <label className="options">Select student ID: </label>
-          <select required
+          <select
+            required
             id="studentId"
             onChange={(e) => {
               handleAll(e);
             }}
-             
           >
             <option selected="true" disabled="disabled">
               Select student ID
@@ -123,7 +122,8 @@ const AddScore = () => {
           {/* Selecting student-Subjects from subjects table */}
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select required
+            <select
+              required
               id="studentSubject1"
               onChange={(e) => {
                 handleAll(e);
@@ -157,7 +157,8 @@ const AddScore = () => {
           {/* <br></br> */}
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select required
+            <select
+              required
               id="studentSubject2"
               onChange={(e) => {
                 handleAll(e);
@@ -190,7 +191,8 @@ const AddScore = () => {
           </div>
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select required
+            <select
+              required
               id="studentSubject3"
               onChange={(e) => {
                 handleAll(e);

@@ -1,8 +1,3 @@
-/* #add-score {
-  position: relative;
-  bottom: 650px;
-} */
-
 .addScore-box {
   height: 327px;
   width: 461px;
@@ -24,7 +19,7 @@
 }
 
 .addScore-btn {
-  margin-left: 30%;
+  margin-left: 38%;
   text-align: center;
 }
 
