@@ -27,17 +27,17 @@ const User = () => {
             <form className="user-view">
                 <label>Enter your ID : </label>
                 <input onChange={(e)=>handle(e)} type="number" id="studentId" />
-                <button onClick={(e)=>Submit(e)}>Get Result</button>
+                <button onClick={(e)=>Submit(e)} id="student-submit">Get Result</button>
             </form>
             {result && result.length > 0 && result.map((obj, index) => (
               <div>
-              <h1>{obj.firstname} Results</h1>
-              <div className="result-box">
-              <p>Student ID: {obj.id}</p>
-              <p>{obj.subject1}: {obj.marks1}</p>
-              <p>{obj.subject2}: {obj.marks2}</p>
-              <p>{obj.subject3}: {obj.marks3}</p>
-              <p>Total: {obj.total}</p>
+              <h1 className="heading">{obj.firstname} Results</h1>
+              <div id="result-box">
+              <p><span className="name-tag">Student ID:</span> {obj.id}</p>
+              <p><span className="name-tag">{obj.subject1}:</span> {obj.marks1}</p>
+              <p><span className="name-tag">{obj.subject2}:</span> {obj.marks2}</p>
+              <p><span className="name-tag">{obj.subject3}:</span> {obj.marks3}</p>
+              <p><span className="name-tag">Total</span>: {obj.total}</p>
               </div>
               </div>
             ))}

@@ -1,13 +1,8 @@
-#add-student{
-    position: relative;
-    bottom: 700px;
-}
-
 .box {
     height: 580px;
     width: 450px;
     background-color: rgb(196 225 199);
-    margin-top: 70px;
+    margin-top: 37px;
     margin-left: 400px;
     border-radius: 85px;
     text-align: center;

@@ -38,7 +38,7 @@ const ViewList = () => {
       <Sidebar />
       <div id="list-div">
         <main>
-          <h1 style={{ textAlign: "center", color: "blue" }}> Student List</h1>
+          <h1 style={{ textAlign: "center", color: "blue", marginBottom:30 }}> Student List</h1>
           <table className="table table-bordered shadow-lg">
             <thead className="table-dark">
               <tr>

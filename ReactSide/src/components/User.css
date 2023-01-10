@@ -5,14 +5,30 @@
     margin-top: 100px;
 }
 
-.result-box {
+#result-box {
     height: 280px;
     background-color: rgb(231, 209, 252);
     width: 300px;
     margin-left: 40%;
-    margin-top: 10%;
+    /* margin-top: 8%; */
     padding-left: 4%;
     padding-top: 3%;
     border-radius: 8%;
     color: blue;
+}
+
+#student-submit {
+    background-color: rgb(37, 109, 197);
+    color: white;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 6%;
+}
+
+.name-tag {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color: black;
 }

@@ -156,23 +156,6 @@ app.get("/studentId", (req, res) => {
   }
 });
 
-// api for students name from student_details table
-// app.get("/studentName", (req, res) => {
-//   try {
-//     let selectQuery = `select * from student_details`;
-//     pool.query(selectQuery, (err, result) => {
-//       if (!err) {
-//         console.log(result.rows)
-//         res.send(result.rows);
-//       } else {
-//         console.log(err.message);
-//       }
-//     });
-//     pool.end;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
 // api for students subjects from Subjects table
 app.get("/studentSubjects", (req, res) => {
@@ -192,26 +175,8 @@ app.get("/studentSubjects", (req, res) => {
   }
 });
 
-// app.post("/getName", (req, res) => {
-//   const user = req.body;
-//   console.log(req.body);
-//   let selectQuery = `select firstname from student_details where id = ${user.id}`;
-//   try {
-//     pool.query(selectQuery, (err, result) => {
-//       if (!err) {
-//         console.log(result.rows[0].firstname)
-//         res.send(result.rows[0].firstname);
-//       } else {
-//         console.log(err.message);
-//       }
-//     });
-//     pool.end;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
-
+//api to store the student score details in database
 app.post("/addScore", (req, res) => {
   const user = req.body;
   let insertQuery = `insert into total_score (student_id, subject1, marks1, subject2, marks2, subject3, marks3, total)
@@ -237,7 +202,7 @@ app.post("/addScore", (req, res) => {
 });
 
 
-
+//api to view the all the student details and total score
 app.get("/viewList", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, lastname, 
@@ -257,6 +222,8 @@ app.get("/viewList", (req, res) => {
   }
 });
 
+
+//api in user side to view the particular student marks
 app.post("/viewUser", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, subject1, marks1, subject2, marks2, subject3, marks3, total from
@@ -275,7 +242,8 @@ app.post("/viewUser", (req, res) => {
   }
 });
 
-// delete history expense
+
+// api on admin side to delete the student details and score
 app.post("/delete", (req, res) => {
   console.log(req.body.id);
   let deleteQuery = `delete from student_details where id='${req.body.id}'`;
@@ -286,48 +254,7 @@ app.post("/delete", (req, res) => {
   pool.query(deleteQuery1, (err1, result1) => {
     console.log("Score record deleted successfully");
   })
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

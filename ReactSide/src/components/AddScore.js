@@ -105,12 +105,12 @@ const AddScore = () => {
         <form onSubmit={(e) => submit(e)}>
           {/* select student ID from student_details table */}
           <label className="options">Select student ID: </label>
-          <select
+          <select required
             id="studentId"
             onChange={(e) => {
               handleAll(e);
             }}
-            required 
+             
           >
             <option selected="true" disabled="disabled">
               Select student ID
@@ -123,12 +123,11 @@ const AddScore = () => {
           {/* Selecting student-Subjects from subjects table */}
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select
+            <select required
               id="studentSubject1"
               onChange={(e) => {
                 handleAll(e);
               }}
-              required
             >
               <option selected="true" disabled="disabled">
                 Select subject
@@ -158,12 +157,11 @@ const AddScore = () => {
           {/* <br></br> */}
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select
+            <select required
               id="studentSubject2"
               onChange={(e) => {
                 handleAll(e);
               }}
-              required
             >
               <option selected="true" disabled="disabled">
                 Select subject
@@ -192,12 +190,11 @@ const AddScore = () => {
           </div>
           <div>
             <label className="subjects">Select Subjects: </label>
-            <select
+            <select required
               id="studentSubject3"
               onChange={(e) => {
                 handleAll(e);
               }}
-              required
             >
               <option selected="true" disabled="disabled">
                 Select Subject
