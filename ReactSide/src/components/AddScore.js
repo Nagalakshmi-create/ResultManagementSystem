@@ -4,8 +4,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AddScore.css";
 import Sidebar from "./Sidebar";
+import { useNavigate } from "react-router-dom";
 
 const AddScore = () => {
+  const navigate = useNavigate();
   const [first, setfirst] = useState("");
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
@@ -43,6 +45,7 @@ const AddScore = () => {
   });
 
   function submit(e) {
+    e.preventDefault()
     axios
       .post("http://localhost:9000/addScore", {
         studentId: allData.studentId,
@@ -57,8 +60,9 @@ const AddScore = () => {
       .then((res) => {
         console.log(res.data.exists);
         if (res.data.exists == "True") {
+          console.log("if");
           showToastMessage();
-          // studentId: ""
+          navigate("/studentScore")
         }
       });
       

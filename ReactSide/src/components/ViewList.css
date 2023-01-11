@@ -1,7 +1,25 @@
 #list-div {
-   margin-left: 5%;
-   margin-right: 5%;
+   margin-left: 10%;
+   margin-right: 15%;
    margin-top: 2%;
    text-align: center;
 }
 
+.search-table {
+   margin-left: 8%;
+   margin-right: 8%;
+   margin-top: 2%;
+   text-align: center;
+}
+
+.search-box {
+   margin-left: 35%;
+   margin-right: 35%;
+   margin-top: 5%;
+   margin-bottom: 5%;
+
+}
+
+.btn {
+   padding: 0%;
+}

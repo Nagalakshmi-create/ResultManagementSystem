@@ -101,7 +101,7 @@ const AddStudent = () => {
           <br></br>
           <input
             onChange={(e) => handle(e)}
-            type="number"
+            type="text"
             id="YOJ"
             placeholder="Year of Join"
             value={data.YOJ}

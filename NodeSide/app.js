@@ -17,7 +17,6 @@ const pool = new Client({
 });
 pool.connect();
 
-
 // Sending user details to the signup table
 app.post("/signup", (req, res) => {
   const user = req.body;
@@ -55,7 +54,7 @@ app.post("/signup", (req, res) => {
   }
 });
 
-//validating the user email and password 
+//validating the user email and password
 app.post("/login", (req, res) => {
   const user = req.body;
   const email = user.email;
@@ -105,13 +104,13 @@ app.post("/addstudent", (req, res) => {
       if (!err) {
         console.log("Insertion was successful");
         res.send({
-          exists:"True",
+          exists: "True",
         });
       } else {
         console.log(err.message);
         res.send({
           exists: "False",
-        })
+        });
       }
     });
     pool.end;
@@ -126,7 +125,7 @@ app.get("/courses", (req, res) => {
     let selectQuery = `select * from courses`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows)
+        console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -144,7 +143,7 @@ app.get("/studentId", (req, res) => {
     let selectQuery = `select * from student_details`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows)
+        console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -155,7 +154,6 @@ app.get("/studentId", (req, res) => {
     console.log(error);
   }
 });
-
 
 // api for students subjects from Subjects table
 app.get("/studentSubjects", (req, res) => {
@@ -163,7 +161,7 @@ app.get("/studentSubjects", (req, res) => {
     let selectQuery = `select * from subjects`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows)
+        console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -174,7 +172,6 @@ app.get("/studentSubjects", (req, res) => {
     console.log(error);
   }
 });
-
 
 //api to store the student score details in database
 app.post("/addScore", (req, res) => {
@@ -188,11 +185,11 @@ app.post("/addScore", (req, res) => {
         res.send({
           exists: "True",
         });
-      }else {
+      } else {
         console.log(err.message);
         res.send({
           exists: "False",
-        })
+        });
       }
     });
     pool.end;
@@ -200,7 +197,6 @@ app.post("/addScore", (req, res) => {
     console.log(error);
   }
 });
-
 
 //api to view the all the student details and total score
 app.get("/viewList", (req, res) => {
@@ -210,7 +206,7 @@ app.get("/viewList", (req, res) => {
                         inner join total_score on total_score.student_id = student_details.id`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows)
+        console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -221,7 +217,6 @@ app.get("/viewList", (req, res) => {
     console.log(error);
   }
 });
-
 
 //api in user side to view the particular student marks
 app.post("/viewUser", (req, res) => {
@@ -242,7 +237,6 @@ app.post("/viewUser", (req, res) => {
   }
 });
 
-
 // api on admin side to delete the student details and score
 app.post("/delete", (req, res) => {
   console.log(req.body.id);
@@ -253,22 +247,42 @@ app.post("/delete", (req, res) => {
   });
   pool.query(deleteQuery1, (err1, result1) => {
     console.log("Score record deleted successfully");
-  })
-});
-
-// Edit the students
-app.post("/edit", (req, res) => {
-  console.log(req.body.id);
-  let editQuery = `delete from student_details where id='${req.body.id}'`;
-  let editQuery1 = `delete from total_score where student_id='${req.body.id}'`;
-  pool.query(editQuery, (err, result) => {
-    console.log("Student record edited successfully");
   });
-  pool.query(editQuery1, (err1, result1) => {
-    console.log("Score record edited successfully");
-  })
 });
 
+// API to search books by its name or author name.
+
+app.post("/search", (req, res) => {
+  var expression = req.body.text;
+  if (expression != "") {
+    expression = "%" + expression + "%";
+    console.log(expression)
+    let searchBooks = `select student_details.id, firstname, lastname, 
+    yearOfjoin, course_name, dob, address, bloodgroup, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id 
+    where course_name like '${expression}' or yearOfjoin like '${expression}'`;
+
+    pool.query(searchBooks, (err, result) => {
+      if (!err) {
+        res.send(result.rows);
+      } else {
+        console.log(err);
+      }
+    });
+  } else {
+    let searchBooks1 = `select student_details.id, firstname, lastname, 
+    yearofjoin, course_name, dob, address, bloodgroup, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id`;
+
+    pool.query(searchBooks1, (err, result1) => {
+      if (!err) {
+        res.send(result1.rows);
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
 
 
 
@@ -276,4 +290,3 @@ app.post("/edit", (req, res) => {
 app.listen(9000, (req, res) => {
   console.log("Server is running on the port 9000");
 });
-

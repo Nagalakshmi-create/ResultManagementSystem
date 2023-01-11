@@ -18,8 +18,10 @@
 }
 
 #logout-btn {
-    margin-left: 65%;
-    background-color: blueviolet;
+    margin-left: 63%;
+    background-color: #8ca4e152;
     border: none;
     /* background-color: #96bbf0; */
+    BORDER-RADIUS: 10PX;
+   
 }
