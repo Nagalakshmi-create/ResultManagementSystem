@@ -40,7 +40,6 @@ app.post("/signup", (req, res) => {
             }
           });
         } else {
-          console.log("inside else");
           res.send({
             exists: "True",
           });
@@ -70,7 +69,7 @@ app.post("/login", (req, res) => {
             var decrypt = crypto.createDecipheriv("des-ede3", key, "");
             var s = decrypt.update(passdb, "base64", "utf8");
             var decryptedData = s + decrypt.final("utf8");
-            console.log("real", decryptedData);
+            // console.log("real", decryptedData);
             if (decryptedData == password) {
               res.send({
                 sucess: "True",
@@ -129,7 +128,7 @@ app.get("/courses", (req, res) => {
     let selectQuery = `select * from courses`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -147,7 +146,7 @@ app.get("/studentId", (req, res) => {
     let selectQuery = `select * from student_details`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -165,7 +164,7 @@ app.get("/studentSubjects", (req, res) => {
     let selectQuery = `select * from subjects`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -211,7 +210,7 @@ app.get("/viewList", (req, res) => {
                         order by firstname, lastname, yearofjoin, total`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -230,7 +229,7 @@ app.post("/viewUser", (req, res) => {
     student_details inner join total_score on total_score.student_id = student_details.id where student_details.id='${req.body.id}'`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       } else {
         console.log(err.message);
@@ -244,7 +243,7 @@ app.post("/viewUser", (req, res) => {
 
 // api on admin side to delete the student details and score
 app.post("/delete", (req, res) => {
-  console.log(req.body.id);
+  // console.log(req.body.id);
   let deleteQuery = `delete from student_details where id='${req.body.id}'`;
   let deleteQuery1 = `delete from total_score where student_id='${req.body.id}'`;
   pool.query(deleteQuery, (err, result) => {
@@ -260,8 +259,8 @@ app.post("/delete", (req, res) => {
 app.post("/search", (req, res) => {
   var expression = req.body.text;
   if (expression != "") {
-    expression = "%" + expression + "%";
-    console.log(expression)
+    expression = "%" + expression.toUpperCase() + "%";
+    // console.log(expression)
     let searchBooks = `select student_details.id, firstname, lastname, 
     yearOfjoin, course_name, dob, address, bloodgroup, total from student_details 
     inner join total_score on total_score.student_id = student_details.id 
@@ -350,17 +349,6 @@ app.get("/toplistIT", (req, res) => {
     console.log(error);
   }
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 app.listen(9000, (req, res) => {
