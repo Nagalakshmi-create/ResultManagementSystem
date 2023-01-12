@@ -21,6 +21,8 @@ const ViewList = () => {
     fetchData();
   }, []);
 
+  
+
   const url = "http://localhost:9000/delete"; //URL To delete Student
   const url1 = "http://localhost:9000/search";
 

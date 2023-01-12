@@ -18,6 +18,9 @@ const User = () => {
       id:data
     }).then((res)=>{
       console.log(res.data)
+      if (res.data.length == 0){
+      alert('this Student ID not Found')
+      }
       setResult(res.data) 
     })
   }

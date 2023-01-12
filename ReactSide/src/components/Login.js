@@ -23,6 +23,12 @@ const Login = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  const showToastMessage2 = () => {
+    toast.error("You are not a user please register", {
+      position: toast.POSITION.TOP_CENTER,
+    })
+  }
   const url = "http://localhost:9000/login";
   function submit(e) {
     if (data.email !== "" && data.password !== "") {
@@ -34,10 +40,15 @@ const Login = () => {
         })
         .then((res) => {
           function toastMessage() {
+
             if (res.data.sucess == "True") {
               showToastMessage();
             } else if (res.data.sucess == "False") {
               showToastMessage1();
+            }
+
+            if (res.data.mail == "False") {
+              showToastMessage2();;
             }
           }
           toastMessage();

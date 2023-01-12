@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddScore from "./components/AddScore";
 import ViewList from "./components/ViewList";
 import User from "./components/User";
+import ViewTop from "./components/ViewTop";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/studentScore" element={<AddScore/>} />
           <Route exact path="/Admin" element={<ViewList/>} />
           <Route exact path="/ViewList" element={<ViewList/>} />
+          <Route exact path="/toplist" element={<ViewTop/>} />
           <Route exact path="/User" element={<User/>} />
         </Routes>
       

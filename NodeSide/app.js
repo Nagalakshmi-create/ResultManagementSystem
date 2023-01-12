@@ -83,6 +83,10 @@ app.post("/login", (req, res) => {
               });
             }
           });
+        }else{
+          res.send({
+            mail: "False",
+          });
         }
       } else {
         console.log(err.message);
@@ -203,7 +207,8 @@ app.get("/viewList", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, lastname, 
                         yearofjoin, course_name, dob, address, bloodgroup, total from student_details 
-                        inner join total_score on total_score.student_id = student_details.id`;
+                        inner join total_score on total_score.student_id = student_details.id 
+                        order by firstname, lastname, yearofjoin, total`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         console.log(result.rows);
@@ -283,6 +288,77 @@ app.post("/search", (req, res) => {
     });
   }
 });
+
+
+//To view EEE toppers
+app.get("/toplistEEE", (req, res) => {
+  try {
+    let selectQuery = `select student_details.id, firstname, lastname, 
+    course_name, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id 
+    where course_name='EEE' order by total DESC limit 3`;
+    pool.query(selectQuery, (err, result) => {
+      if (!err) {
+        res.send(result.rows);
+      } else {
+        console.log(err.message);
+      }
+    });
+    pool.end;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//To view CSE toppers
+app.get("/toplistCSE", (req, res) => {
+  try {
+    let selectQuery = `select student_details.id, firstname, lastname, 
+    course_name, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id 
+    where course_name='CSE' order by total DESC limit 3`;
+    pool.query(selectQuery, (err, result) => {
+      if (!err) {
+        res.send(result.rows);
+      } else {
+        console.log(err.message);
+      }
+    });
+    pool.end;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+//To view IT toppers
+app.get("/toplistIT", (req, res) => {
+  try {
+    let selectQuery = `select student_details.id, firstname, lastname, 
+    course_name, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id 
+    where course_name='IT' order by total DESC limit 3`;
+    pool.query(selectQuery, (err, result) => {
+      if (!err) {
+        res.send(result.rows);
+      } else {
+        console.log(err.message);
+      }
+    });
+    pool.end;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
+
+
+
+
+
+
 
 
 
