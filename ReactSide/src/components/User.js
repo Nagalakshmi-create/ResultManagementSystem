@@ -46,8 +46,9 @@ const User = () => {
               <p><span className="name-tag">{obj.subject2}:</span> {obj.marks2}</p>
               <p><span className="name-tag">{obj.subject3}:</span> {obj.marks3}</p>
               <p><span className="name-tag">Total</span>: {obj.total}</p>
-              <button onClick={newResult} id="student-submit">New Result</button>
+             
               </div>
+              <button onClick={newResult} id="new-result">New Result</button>
               </div>
             ))}
         </>

@@ -35,3 +35,11 @@
   font-weight: 600;
   color: black;
 }
+
+#new-result {
+  background-color: rgb(37, 109, 197);
+  color: white;
+  border: none;
+  margin-left: 45%;
+  margin-top: 2%;
+}

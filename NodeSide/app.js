@@ -293,9 +293,9 @@ app.post("/search", (req, res) => {
 app.get("/toplistEEE", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, lastname, 
-    course_name, total from student_details 
-    inner join total_score on total_score.student_id = student_details.id 
-    where course_name='EEE' order by total DESC limit 3`;
+                        course_name, total from student_details 
+                        inner join total_score on total_score.student_id = student_details.id 
+                        where course_name='EEE' order by total DESC limit 3`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         res.send(result.rows);
