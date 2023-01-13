@@ -143,7 +143,7 @@ app.get("/courses", (req, res) => {
 // api for student-id from student_details table
 app.get("/studentId", (req, res) => {
   try {
-    let selectQuery = `select * from student_details`;
+    let selectQuery = `select * from student_details where deleted_student='False'`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         // console.log(result.rows);
@@ -205,9 +205,10 @@ app.post("/addScore", (req, res) => {
 app.get("/viewList", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, lastname, 
-                        yearofjoin, course_name, dob, address, bloodgroup, total from student_details 
-                        inner join total_score on total_score.student_id = student_details.id 
-                        order by firstname, lastname, yearofjoin, total`;
+    yearofjoin, course_name, dob, address, bloodgroup, total from student_details 
+    inner join total_score on total_score.student_id = student_details.id  
+    where student_details.deleted_student='False'
+    order by firstname, lastname, yearofjoin, total `;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         // console.log(result.rows);
@@ -244,8 +245,9 @@ app.post("/viewUser", (req, res) => {
 // api on admin side to delete the student details and score
 app.post("/delete", (req, res) => {
   // console.log(req.body.id);
-  let deleteQuery = `delete from student_details where id='${req.body.id}'`;
-  let deleteQuery1 = `delete from total_score where student_id='${req.body.id}'`;
+  let deleteQuery = `UPDATE student_details SET deleted_student = 'True' where id='${req.body.id}'`;
+  let deleteQuery1 = `UPDATE total_score SET deleted_total = 'True' where student_id='${req.body.id}'`
+  // let deleteQuery1 = `delete from total_score where student_id='${req.body.id}'`;
   pool.query(deleteQuery, (err, result) => {
     console.log("Student record deleted successfully");
   });
