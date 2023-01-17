@@ -143,7 +143,9 @@ app.get("/courses", (req, res) => {
 // api for student-id from student_details table
 app.get("/studentId", (req, res) => {
   try {
-    let selectQuery = `select * from student_details where deleted_student='False'`;
+    // let selectQuery = `select * from student_details where deleted_student='False'`;
+    let selectQuery = `select id from student_details where id not in (select student_details.id from student_details inner join total_score 
+                          on student_details.id = total_score.student_id where student_details.deleted_student = 'False') and deleted_student = 'False'`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         // console.log(result.rows);
@@ -227,7 +229,7 @@ app.get("/viewList", (req, res) => {
 app.post("/viewUser", (req, res) => {
   try {
     let selectQuery = `select student_details.id, firstname, subject1, marks1, subject2, marks2, subject3, marks3, total from
-    student_details inner join total_score on total_score.student_id = student_details.id where student_details.id='${req.body.id}'`;
+    student_details inner join total_score on total_score.student_id = student_details.id where student_details.id='${req.body.id}' and deleted_student='False'`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         // console.log(result.rows);
@@ -246,7 +248,7 @@ app.post("/viewUser", (req, res) => {
 app.post("/delete", (req, res) => {
   // console.log(req.body.id);
   let deleteQuery = `UPDATE student_details SET deleted_student = 'True' where id='${req.body.id}'`;
-  let deleteQuery1 = `UPDATE total_score SET deleted_total = 'True' where student_id='${req.body.id}'`
+  let deleteQuery1 = `UPDATE total_score SET delted_total = 'True' where student_id='${req.body.id}'`
   // let deleteQuery1 = `delete from total_score where student_id='${req.body.id}'`;
   pool.query(deleteQuery, (err, result) => {
     console.log("Student record deleted successfully");
@@ -266,7 +268,7 @@ app.post("/search", (req, res) => {
     let searchBooks = `select student_details.id, firstname, lastname, 
     yearOfjoin, course_name, dob, address, bloodgroup, total from student_details 
     inner join total_score on total_score.student_id = student_details.id 
-    where course_name like '${expression}' or yearOfjoin like '${expression}'`;
+    where (course_name like '${expression}' or yearOfjoin like '${expression}') and (deleted_student='False')`;
 
     pool.query(searchBooks, (err, result) => {
       if (!err) {
@@ -297,7 +299,7 @@ app.get("/toplistEEE", (req, res) => {
     let selectQuery = `select student_details.id, firstname, lastname, 
                         course_name, total from student_details 
                         inner join total_score on total_score.student_id = student_details.id 
-                        where course_name='EEE' order by total DESC limit 3`;
+                        where course_name='EEE' and deleted_student='False' order by total DESC limit 3`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         res.send(result.rows);
@@ -317,7 +319,7 @@ app.get("/toplistCSE", (req, res) => {
     let selectQuery = `select student_details.id, firstname, lastname, 
     course_name, total from student_details 
     inner join total_score on total_score.student_id = student_details.id 
-    where course_name='CSE' order by total DESC limit 3`;
+    where course_name='CSE' and deleted_student='False' order by total DESC limit 3`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         res.send(result.rows);
@@ -338,7 +340,7 @@ app.get("/toplistIT", (req, res) => {
     let selectQuery = `select student_details.id, firstname, lastname, 
     course_name, total from student_details 
     inner join total_score on total_score.student_id = student_details.id 
-    where course_name='IT' order by total DESC limit 3`;
+    where course_name='IT' and deleted_student='False' order by total DESC limit 3`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
         res.send(result.rows);

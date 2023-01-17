@@ -1,6 +1,7 @@
 import "./User.css";
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import img from "../components/idcard.png";
 
 const User = () => {
   const [data, setData] = useState();
@@ -32,24 +33,33 @@ const User = () => {
 
     return (
         <>
-            <form className="user-view">
-                <label>Enter your ID : </label>
-                <input onChange={(e)=>handle(e)} type="number" id="studentId" />
-                <button onClick={(e)=>Submit(e)} id="student-submit">Get Result</button>
-            </form>
+        <div className="banner-card">
+        <img src={img} className="idcard-img" />
+        </div>
+        <form className="user-view">
+        <label>Enter your ID : </label>
+        <input onChange={(e)=>handle(e)} type="number" id="studentId" />
+         <button onClick={(e)=>Submit(e)} id="student-submit">Get Result</button>
+       
+     </form>
+          
+          
             {result && result.length > 0 && result.map((obj, index) => (
               <div>
-              <h1 className="heading">{obj.firstname} Results</h1>
+             
               <div id="result-box">
-              <p><span className="name-tag">Student ID:</span> {obj.id}</p>
+              <p><span className="name-tag">Student Name:</span> {obj.firstname}</p>
+             
               <p><span className="name-tag">{obj.subject1}:</span> {obj.marks1}</p>
               <p><span className="name-tag">{obj.subject2}:</span> {obj.marks2}</p>
               <p><span className="name-tag">{obj.subject3}:</span> {obj.marks3}</p>
               <p><span className="name-tag">Total</span>: {obj.total}</p>
+
              
               </div>
-              <button onClick={newResult} id="new-result">New Result</button>
+              {/* <button onClick={newResult} id="new-result">New Result</button> */}
               </div>
+              
             ))}
         </>
     )

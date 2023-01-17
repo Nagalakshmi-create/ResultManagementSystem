@@ -76,6 +76,7 @@ const AddStudent = () => {
       <Sidebar />
       <div className="box" id="add-student">
         <h1 className="add-heading">Add Student Details</h1>
+        <p className="text-danger">All fields are mandatory</p>
         <form>
           <input
             onChange={(e) => handle(e)}

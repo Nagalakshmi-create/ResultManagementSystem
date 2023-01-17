@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
-import moment from "moment";
-import axios from "axios";
-import Form from "react-bootstrap/Form";
 import './ViewTop.css';
 
 const ViewTop = () => {

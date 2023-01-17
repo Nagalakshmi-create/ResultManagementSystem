@@ -1,5 +1,5 @@
 .box {
-    height: 580px;
+    height: 600px;
     width: 450px;
     background-color: rgb(196 225 199);
     margin-top: 37px;
@@ -11,7 +11,7 @@
 
 .add-heading {
     font-size: 22px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     font-weight: bold;
     font-family: cursive;
     color: darkslategray;

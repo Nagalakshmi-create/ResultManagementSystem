@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 
 const ViewList = () => {
   const [show, setShow] = useState(true);
-  const  [searchedBook, setsearchedBook] = useState([]);
+  const  [searchedCourse, setsearchedCourse] = useState([]);
   const [searchValue, setsearchValue] = useState();
   const [studentList, setStudentList] = useState([]);
 
@@ -36,14 +36,11 @@ const ViewList = () => {
         if (res.data.length > 0) {
           setShow(false);
         }
-        setsearchedBook(res.data);
+        setsearchedCourse(res.data);
         console.log("TEST", res.data);
       });
   };
 
-  const handleChange = (e) => {
-    setsearchValue(e.target.value);
-  };
 
   const submit = () => {
     console.log("checking", searchValue);
@@ -78,7 +75,7 @@ const ViewList = () => {
       <Form className="d-flex">
         <Form.Control
           type="search"
-          placeholder="Search course"
+          placeholder="Search course or year"
           className="search-box"
           aria-label="Search"
           onChange={(e) => handleSearch(e)}
@@ -96,7 +93,7 @@ const ViewList = () => {
 
       {!show ? (
         <div className="search-table">
-          {searchedBook.length > 0 && (
+          {searchedCourse.length > 0 && (
             <table className="table table-bordered shadow-lg">
               <thead className="table-dark">
                 <tr>
@@ -113,9 +110,9 @@ const ViewList = () => {
                 </tr>
               </thead>
               <tbody>
-                {searchedBook &&
-                  searchedBook.length > 0 &&
-                  searchedBook.map((obj, index) => (
+                {searchedCourse &&
+                  searchedCourse.length > 0 &&
+                  searchedCourse.map((obj, index) => (
                     <tr key={index}>
                       <td>{obj.id}</td>
                       <td className="status-font">{obj.firstname}</td>

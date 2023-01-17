@@ -60,7 +60,6 @@ const AddScore = () => {
       .then((res) => {
         console.log(res.data.exists);
         if (res.data.exists == "True") {
-          console.log("if");
           showToastMessage();
           navigate("/studentScore")
         }
@@ -107,7 +106,7 @@ const AddScore = () => {
         <hr></hr>
         <form onSubmit={(e) => submit(e)}>
           {/* select student ID from student_details table */}
-          <label className="options">Select student ID: </label>
+          <label className="options">Select student ID <span className="text-danger">*</span>: </label>
           <select
             required
             id="studentId"
@@ -115,7 +114,7 @@ const AddScore = () => {
               handleAll(e);
             }}
           >
-            <option selected="true" disabled="disabled">
+            <option selected="true" disabled="disabled" value="">
               Select student ID
             </option>
             {sid &&
@@ -125,7 +124,7 @@ const AddScore = () => {
           <br></br>
           {/* Selecting student-Subjects from subjects table */}
           <div>
-            <label className="subjects">Select Subjects: </label>
+            <label className="subjects">Select Subjects <span className="text-danger">*</span>: </label>
             <select
               required
               id="studentSubject1"
@@ -133,7 +132,7 @@ const AddScore = () => {
                 handleAll(e);
               }}
             >
-              <option selected="true" disabled="disabled">
+              <option selected="true" disabled="disabled" value="">
                 Select subject
               </option>
               {subject &&
@@ -160,7 +159,7 @@ const AddScore = () => {
           </div>
           {/* <br></br> */}
           <div>
-            <label className="subjects">Select Subjects: </label>
+            <label className="subjects">Select Subjects <span className="text-danger">*</span>: </label>
             <select
               required
               id="studentSubject2"
@@ -168,7 +167,7 @@ const AddScore = () => {
                 handleAll(e);
               }}
             >
-              <option selected="true" disabled="disabled">
+              <option selected="true" disabled="disabled" value="">
                 Select subject
               </option>
               {subject &&
@@ -194,7 +193,7 @@ const AddScore = () => {
             />
           </div>
           <div>
-            <label className="subjects">Select Subjects: </label>
+            <label className="subjects">Select Subjects <span className="text-danger">*</span>: </label>
             <select
               required
               id="studentSubject3"
@@ -202,7 +201,7 @@ const AddScore = () => {
                 handleAll(e);
               }}
             >
-              <option selected="true" disabled="disabled">
+              <option selected="true" disabled="disabled" value="">
                 Select Subject
               </option>
               {subject &&

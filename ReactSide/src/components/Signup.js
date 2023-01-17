@@ -4,6 +4,9 @@ import "./Signup.css";
 import validator from "validator";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
+import img from "../components/new.png";
+
 import { useNavigate } from "react-router-dom";
 
 // import { useForm } from "react-hook-form";
@@ -93,6 +96,7 @@ const Signup = () => {
     console.log(newData);
   }
   return (
+    <div className="signup-img">
     <div className="signin-form">
       <h1 id="heading">Sign Up</h1>
       <form onSubmit={(e) => submit(e)}>
@@ -149,7 +153,18 @@ const Signup = () => {
         <button type="submit" id="sign-btn" className="btn btn-size">
           Sign Up
         </button>
+         <div id="backto-login">
+      <p>Back to</p>
+      <Link to="/login" id="login-color">
+        Login
+      </Link>
+    </div>
       </form>
+      <div>
+      <img src={img} className="new-img" />
+    </div>
+     
+    </div>
     </div>
   );
 };

@@ -1,28 +1,32 @@
 .user-view {
+  /* background-image: url("idcard.png"); */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: -471px;
+  /* width: 841px; */
+  /* margin-left: -5px; */
+  margin-right: 29px;
 }
 
 #result-box {
-  height: 280px;
-  background-color: rgb(231, 209, 252);
-  /* -webkit-box-shadow: 0 0 30px #feb2e3;
-    box-shadow: 0 0 30px #f3bfee; */
-  width: 300px;
+
+  height: 242px;
+  /* background-color: rgb(231, 209, 252); */
+  width: 264px;
   margin-left: 40%;
-  /* margin-top: 8%; */
+  margin-top: 9%;
   padding-left: 4%;
-  padding-top: 3%;
+  padding-top: 5%;
   border-radius: 8%;
   color: rgb(213, 64, 34);
   font-weight: bold;
 }
 
 #student-submit {
-  background-color: rgb(37, 109, 197);
-  color: white;
+  background-color: rgb(82 223 87 / 35%);
+  color: #e8eee5;
+  width: 88px;
 }
 
 .heading {
@@ -31,15 +35,34 @@
 }
 
 .name-tag {
+  margin-left: 8px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
-  color: black;
+  color: #e61616;
 }
 
 #new-result {
-  background-color: rgb(37, 109, 197);
+  background-color: rgb(37 141 67 / 91%);
   color: white;
   border: none;
-  margin-left: 45%;
+  margin-left: 46%;
   margin-top: 2%;
 }
+
+.idcard-img{
+  margin-top: -29px;
+  max-width: 100%;
+  height: 80vh;
+  width: 497px;
+  margin-left: 436px;
+  height: 740px;
+}
+
+
+
+
+
+/* .idcard-img{
+  width: 50px;
+  height: 45px;
+} */
