@@ -1,26 +1,21 @@
 .user-view {
-  /* background-image: url("idcard.png"); */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -471px;
-  /* width: 841px; */
-  /* margin-left: -5px; */
   margin-right: 29px;
 }
 
 #result-box {
-
-  height: 242px;
-  /* background-color: rgb(231, 209, 252); */
-  width: 264px;
-  margin-left: 40%;
-  margin-top: 9%;
-  padding-left: 4%;
-  padding-top: 5%;
-  border-radius: 8%;
-  color: rgb(213, 64, 34);
-  font-weight: bold;
+  height: 220px;
+    width: 321px;
+    margin-left: 40%;
+    margin-top: 8%;
+    padding-left: 4%;
+    padding-top: 5%;
+    border-radius: 8%;
+    color: rgb(213, 64, 34);
+    font-weight: bold;
 }
 
 #student-submit {
@@ -50,19 +45,10 @@
 }
 
 .idcard-img{
-  margin-top: -29px;
+  margin-top: -111px;
   max-width: 100%;
   height: 80vh;
-  width: 497px;
+  width: 520px;
   margin-left: 436px;
-  height: 740px;
+  height: 760px;
 }
-
-
-
-
-
-/* .idcard-img{
-  width: 50px;
-  height: 45px;
-} */

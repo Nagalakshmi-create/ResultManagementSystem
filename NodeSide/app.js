@@ -99,11 +99,10 @@ app.post("/login", (req, res) => {
 //sending student details to the student_details table
 app.post("/addstudent", (req, res) => {
   const user = req.body;
-  console.log(req.body);
   let insertQuery = `insert into student_details(firstname, lastname, yearOfjoin, DOB, course_name, Address, BloodGroup)
                        values('${user.fname}', '${user.lname}', '${user.YOJ}', '${user.DOB}', '${user.course}', '${user.Address}', '${user.BloodGroup}')`;
   try {
-    pool.query(insertQuery, (err, result) => {
+    pool.query(insertQuery, (err, res) => {
       if (!err) {
         console.log("Insertion was successful");
         res.send({
@@ -228,7 +227,7 @@ app.get("/viewList", (req, res) => {
 //api in user side to view the particular student marks
 app.post("/viewUser", (req, res) => {
   try {
-    let selectQuery = `select student_details.id, firstname, subject1, marks1, subject2, marks2, subject3, marks3, total from
+    let selectQuery = `select student_details.id, firstname, course_name, subject1, marks1, subject2, marks2, subject3, marks3, total from
     student_details inner join total_score on total_score.student_id = student_details.id where student_details.id='${req.body.id}' and deleted_student='False'`;
     pool.query(selectQuery, (err, result) => {
       if (!err) {
